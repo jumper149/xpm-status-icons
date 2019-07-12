@@ -20,7 +20,7 @@ XPM is suited well for minimalistic, pixel based icons.
 Pros:
 - image is basically source code
 - image can be edited from your text editor (vim is suited very well)
-- colors can changed with simple commands like `sed -i '21,36s/g/b/g' example.xpm`
+- colors can be changed with simple commands like `sed -i '21,36s/g/b/g' example.xpm`
 
 Cons:
 - not every bar supports XPM
