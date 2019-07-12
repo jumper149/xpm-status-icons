@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 MAIN_GIT_DIR="$(git rev-parse --show-toplevel)" 
 
@@ -9,22 +9,7 @@ if [[ "${MAIN_GIT_DIR}" != *"xpm-status-icons" ]] ; then
     exit 1
 fi
 
-DIRS='battery/idle
-      battery/off
-      battery/on
-      cpu
-      temperature
-      ram
-      network/rx
-      network/tx
-      workspaces/current
-      workspaces/hidden
-      workspaces/hiddenNoWindows
-      workspaces/urgent
-      workspaces/visible
-      music
-      weather
-     '
+source "${MAIN_GIT_DIR}/bin/config/configIconDirs.sh"
 
 echo "Clear products of previous instances of this script."
 rm "${MAIN_GIT_DIR}/showcase.xpm" "${MAIN_GIT_DIR}/showcase.png"
