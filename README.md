@@ -8,9 +8,9 @@ If you want to contribute your own icons, you can make a pull request.
 
 ## Executables
 There are a few executables in `bin/`:
-- `changeColors.sh` -- change colors of a XPM
-- `createShowcase.sh` -- create an image of all icons in `xpm-status-icons/icons/`
-- `changeAllColors.sh` -- change colors of every XPM in `xpm-status-icons/icons/`
+- `changeColors.sh`:  change colors of a XPM
+- `createShowcase.sh`: create an image of all icons in `xpm-status-icons/icons/`
+- `changeAllColors.sh`: change colors of every XPM in `xpm-status-icons/icons/`
 
 ## XPM as an icon-format
 XPM is suited well for minimalistic, pixel based icons.
