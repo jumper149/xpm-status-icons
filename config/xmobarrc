@@ -1,0 +1,168 @@
+Config { 
+
+  --   black
+  --     color0:  #282a2e
+  --     color8:  #373b41
+  --   red
+  --     color1:  #a54242
+  --     color9:  #cc6666
+  --   green
+  --     color2:  #8c9440
+  --     color10: #b5bd68
+  --   yellow
+  --     color3:  #de935f
+  --     color11: #f0c674
+  --   blue
+  --     color4:  #5f819d
+  --     color12: #81a2be
+  --   magenta
+  --     color5:  #85678f
+  --     color13: #b294bb
+  --   cyan
+  --     color6:  #5e8d87
+  --     color14: #8abeb7
+  --   white
+  --     color7:  #707880
+  --     color15: #c5c8c6
+
+    font        = "xft:Inconsolata:size=13:style=Regular:antialias=true"
+  , bgColor     = "#282a2e"
+  , fgColor     = "#c5c8c6"
+  , alpha       = 0
+  , position    = Top
+  , border      = NoBorder
+  , borderWidth = 0
+  , borderColor = "#373b41"
+
+  , iconRoot = "/home/jumper/.xmobar/icons"
+
+  , sepChar  = "%"   -- delineator between plugin names and straight text
+  , alignSep = "}{"  -- separator between left-right alignment
+
+  , template = " %battery% <icon=seperator.xpm/> %cpu% <icon=seperator.xpm/> %multicoretemp% <icon=seperator.xpm/> %memory% <icon=seperator.xpm/> %dynnetwork% <icon=seperator.xpm/> %kbd%}<icon=seperator.xpm/> %UnsafeStdinReader% <icon=seperator.xpm/>{%mail% <icon=seperator.xpm/> %mpd% <icon=seperator.xpm/> %EDDV% <icon=seperator.xpm/> %date% "
+
+  , lowerOnStart     = True    -- send to bottom of window stack on start
+  , hideOnStart      = False   -- start with window unmapped (hidden)
+  , allDesktops      = True    -- show on all desktops
+  , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
+  , pickBroadest     = False   -- choose widest display (multi-monitor)
+  , persistent       = True    -- enable/disable hiding (True = disabled)
+
+  , commands = [
+
+         Run UnsafeStdinReader
+
+       , Run Battery [ "--template" , "<leftipat> <acstatus>"
+                     , "--Low"      , "33"        -- units: %
+                     , "--High"     , "66"        -- units: %
+                     , "--low"      , "#a54242"
+                     , "--normal"   , "#de935f"
+                     , "--high"     , "#b5bd68"
+                     , "--"
+                       , "--on-icon-pattern"   , "<icon=battery/on/battery_on_%%.xpm/>"
+                       , "--off-icon-pattern"  , "<icon=battery/off/battery_off_%%.xpm/>"
+                       , "--idle-icon-pattern" , "<icon=battery/idle/battery_idle_%%.xpm/>"
+                       , "-o" , "<left><fc=#c5c8c6>%</fc> <timeleft>" -- discharging status
+                       , "-O" , "<left><fc=#c5c8c6>% <timeleft></fc>" -- plugged in status
+                       , "-i" , "<fc=#707880>IDLE</fc>"               -- charged status
+                     ] 50
+
+       , Run Cpu [ "--template" , "<ipat><total>%"
+                 , "--Low"      , "55"      -- units: %
+                 , "--High"     , "77"      -- units: %
+                 , "--low"      , "#b5bd68"
+                 , "--normal"   , "#de935f"
+                 , "--high"     , "#a54242"
+                 , "--ppad"              , "3"
+                 , "--width"             , "3"
+                 , "--maxtwidth"         , "4"
+                 , "--"
+                   , "--load-icon-pattern" , "<icon=cpu/cpu_%%.xpm/>"
+                 ] 10
+
+       , Run MultiCoreTemp [ "--template" , "<maxipat><max>°C"
+                           , "--Low"      , "65"      -- units: °C
+                           , "--High"     , "80"      -- units: °C
+                           , "--low"      , "#b5bd68"
+                           , "--normal"   , "#de935f"
+                           , "--high"     , "#a54242"
+                           , "--ppad"      , "3"
+                           , "--width"     , "3"
+                           , "--maxtwidth" , "100"
+                           , "--"
+                             , "--load-icon-pattern" , "<icon=temperature/temperature_%%.xpm/>"
+                             , "--mintemp" , "20"
+                             , "--maxtemp" , "90"
+                           ] 50
+
+       , Run Memory [ "--template" , "<usedipat><usedratio>%"
+                    , "--Low"      , "60"      -- units: %
+                    , "--High"     , "84"      -- units: %
+                    , "--low"      , "#b5bd68"
+                    , "--normal"   , "#de935f"
+                    , "--high"     , "#a54242"
+                    , "--ppad"      , "3"
+                    , "--width"     , "3"
+                    , "--maxtwidth" , "4"
+                    , "--"
+                      , "--used-icon-pattern" , "<icon=ram/ram_%%.xpm/>"
+                    ] 10
+
+       , Run DynNetwork [ "--template" , "<txipat><rxipat>"
+                        , "--Low"      , "10000"   -- units: B/s
+                        , "--High"     , "100000"  -- units: B/s
+                        , "--low"      , "#b5bd68"
+                        , "--normal"   , "#de935f"
+                        , "--high"     , "#a54242"
+                        , "--maxtwidth" , "0"
+                        , "--"
+                          , "--rx-icon-pattern" , "<icon=network/rx/network_rx_%%.xpm/>"
+                          , "--tx-icon-pattern" , "<icon=network/tx/network_tx_%%.xpm/>"
+                        ] 10
+
+       , Run Kbd [ ("de" , "<fc=#cc6666>DE</fc>")
+                 , ("us" , "<fc=#b5bd68>US</fc>")
+                 ]
+
+       , Run MPD [ "--template" , "<statei>"
+                   , "--maxtwidth"        , "0"
+                 , "--"
+                   , "-P" , "<icon=music/music_playing.xpm/>" -- playing
+                   , "-Z" , "<icon=music/music_paused.xpm/>"  -- paused
+                   , "-S" , "<icon=music/music_stopped.xpm/>" -- stopped
+                 ] 10
+
+       , Run Mail [ ("<fc=#a54242>G</fc>" , "~/.mail/gmail/INBOX")
+                  , ("<fc=#5f819d>U</fc>" , "~/.mail/stud-uni-hannover/INBOX")
+                  , ("<fc=#8c9440>B</fc>" , "~/.mail/botanik-uni-hannover/INBOX")
+                  ] "mail"
+
+       , Run WeatherX "EDDV" [ (""                        , "<fc=#5e8d87>?</fc>")
+                             , ("clear"                   , "<icon=weather/weather_sunny.xpm/>")
+                             , ("mostly clear"            , "<icon=weather/weather_mostly_sunny.xpm/>")
+                             , ("sunny"                   , "<icon=weather/weather_sunny.xpm/>")
+                             , ("mostly sunny"            , "<icon=weather/weather_mostly_sunny.xpm/>")
+                             , ("partly sunny"            , "<icon=weather/weather_mostly_cloudy.xpm/>")
+                             , ("cloudy"                  , "<icon=weather/weather_cloudy.xpm/>")
+                             , ("mostly cloudy"           , "<icon=weather/weather_mostly_cloudy.xpm/>")
+                             , ("partly cloudy"           , "<icon=weather/weather_mostly_sunny.xpm/>")
+                             , ("fair"                    , "<icon=weather/weather_sunny.xpm/>")
+                             , ("overcast"                , "<icon=weather/weather_cloudy.xpm/>")
+                             , ("considerable cloudiness" , "<icon=weather/weather_cloudy.xpm/>")
+                             ] [ "--template", "<skyConditionS><tempC>°C <fc=#5f819d><rh></fc>% <fc=#81a2be><pressure></fc>hPa"
+                               , "--Low"      , "10"      -- units: %
+                               , "--High"     , "20"      -- units: %
+                               , "--low"      , "#81a2be"
+                               , "--normal"   , "#b5bd68"
+                               , "--high"     , "#de935f"
+                               , "--ppad"      , "3"
+                               , "--width"     , "3"
+                               , "--maxtwidth" , "18"
+                               ] 36000
+
+       , Run Date "%a %d/%m/%y <icon=seperator.xpm/> %T" "date" 10
+
+       ]
+
+  }
+-- vim: syntax=haskell
