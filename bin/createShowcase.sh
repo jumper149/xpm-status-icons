@@ -39,7 +39,7 @@ for directory in ${DIRS} ; do
 done
 
 echo "Transform white fills with transparency."
-sed -i 's/white/none/g' "${MAIN_GIT_DIR}/showcase.xpm"
+sed -i 's/white/None/g' "${MAIN_GIT_DIR}/showcase.xpm"
 
 echo "Convert showcase to PNG."
 convert "${MAIN_GIT_DIR}/showcase.xpm" "${MAIN_GIT_DIR}/showcase.png"

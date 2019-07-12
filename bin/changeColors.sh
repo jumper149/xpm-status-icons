@@ -12,8 +12,8 @@ if [ -z "$2" ] ; then
     exit 2
 fi
 
-FILE="$1"
-CONFIG_FILE="$2"
+CONFIG_FILE="$1"
+FILE="$2"
 
 source "${CONFIG_FILE}"
 
