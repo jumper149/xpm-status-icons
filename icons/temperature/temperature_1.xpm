@@ -30,7 +30,7 @@ static char *XPM_icon[] = {
 "   ww   ww  ",
 "  ww     ww ",
 "  w       w ",
-"  w BBBBB w ",
+"  w ggggg w ",
 "  ww     ww ",
 "   wwwwwww  ",
 "            ",

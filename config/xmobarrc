@@ -81,23 +81,23 @@ Config {
                  ] 10
 
        , Run MultiCoreTemp [ "--template" , "<maxipat><max>°C"
-                           , "--Low"      , "65"      -- units: °C
-                           , "--High"     , "80"      -- units: °C
+                           , "--Low"      , "64"      -- units: °C
+                           , "--High"     , "73"      -- units: °C
                            , "--low"      , "#b5bd68"
                            , "--normal"   , "#de935f"
                            , "--high"     , "#a54242"
                            , "--ppad"      , "3"
                            , "--width"     , "3"
-                           , "--maxtwidth" , "100"
+                           , "--maxtwidth" , "5"
                            , "--"
                              , "--load-icon-pattern" , "<icon=temperature/temperature_%%.xpm/>"
                              , "--mintemp" , "20"
-                             , "--maxtemp" , "90"
+                             , "--maxtemp" , "100"
                            ] 50
 
        , Run Memory [ "--template" , "<usedipat><usedratio>%"
-                    , "--Low"      , "60"      -- units: %
-                    , "--High"     , "84"      -- units: %
+                    , "--Low"      , "55"      -- units: %
+                    , "--High"     , "77"      -- units: %
                     , "--low"      , "#b5bd68"
                     , "--normal"   , "#de935f"
                     , "--high"     , "#a54242"
@@ -125,7 +125,7 @@ Config {
                  ]
 
        , Run MPD [ "--template" , "<statei>"
-                   , "--maxtwidth"        , "0"
+                 , "--maxtwidth" , "0"
                  , "--"
                    , "-P" , "<icon=music/music_playing.xpm/>" -- playing
                    , "-Z" , "<icon=music/music_paused.xpm/>"  -- paused
