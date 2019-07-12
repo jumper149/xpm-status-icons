@@ -28,3 +28,4 @@ Cons:
 ## my Setup
 I am using my own fork of [xmobar](https://github.com/jumper149/xmobar/tree/newCoreTemp) (branch newCoreTemp).
 Workspaces are piped into xmobar from xmonad.
+You can find the configuration files for [xmobar](https://github.com/jumper149/dotfiles/blob/master/.xmobar/xmobarrc) and [xmonad](https://github.com/jumper149/dotfiles/blob/master/.xmonad/xmonad.hs) in my [dotfiles](https://github.com/jumper149/dotfiles).
