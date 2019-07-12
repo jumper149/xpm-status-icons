@@ -3,6 +3,8 @@ This is a set of Icons for any status bar.
 
 ![showcase-12-07-19](https://raw.githubusercontent.com/jumper149/data/master/xpm-status-icons/showcase.png)
 
+![xmobar-example-12-07-19](https://raw.githubusercontent.com/jumper149/data/master/xpm-status-icons/xmobar.png)
+
 Feel free to use them in any way you want and fork to make your own versions.
 If you want to contribute your own icons, you can make a pull request.
 
